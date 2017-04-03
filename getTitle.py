@@ -13,7 +13,7 @@ bs0bj = BeautifulSoup(html,'lxml')
 
 title = set()
 def tillNone(family):
-    if family.string is not None:
+    if family.string is not None:   #'cause if a Tag has more than one child, it’s not clear what .string should refer to, so .string is defined to be None
          title.add(family.string)
     else:
         for each_child in family:
@@ -21,7 +21,7 @@ def tillNone(family):
 def getTitle(bs0bj):
     try:
         #print(len(bs0bj.findAll("",class_=re.compile('.*title(.*)'))))
-        for posbl_div in bs0bj.findAll("",class_=re.compile('.*title(.*)')):
+        for posbl_div in bs0bj.findAll("",class_=re.compile('.*title(.*)')):    #possible division
             tillNone(posbl_div)
     except AttributeError as attrerr:
         print("aaa"+str(attrerr))
