@@ -11,7 +11,7 @@ import re
 html = urlopen('http://bbs.tianya.cn/post-stocks-1841155-1.shtml')
 bs0bj = BeautifulSoup(html,'lxml')
 
-title = set()
+title = set()   #type set picks only the non-repeated ones
 def tillNone(family):
     if family.string is not None:   #'cause if a Tag has more than one child, it’s not clear what .string should refer to, so .string is defined to be None
          title.add(family.string)
@@ -24,7 +24,7 @@ def getTitle(bs0bj):
         for posbl_div in bs0bj.findAll("",class_=re.compile('.*title(.*)')):    #possible division
             tillNone(posbl_div)
     except AttributeError as attrerr:
-        print("aaa"+str(attrerr))
+        print("aaa"+str(attrerr))   #"aaa"is for informing that it's failed for AttributeError and then the error message come as followed
 
 getTitle(bs0bj)
 print("post name:")
