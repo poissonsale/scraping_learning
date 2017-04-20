@@ -10,19 +10,24 @@ import re
 from bs4 import NavigableString
 
 def getTag(urlstring):
-    html = urlopen(urlstring)
-    bs0bj = BeautifulSoup(html,'lxml')
-    
-    class_values = set()
-    with open('class_values.txt','a') as f:
-        for item in bs0bj.body.find_all("",{"class":re.compile("^.*")}):
-            if len(item['class'])==1:
-                class_values.add(item['class'][0])
-            else:
-                for i in item['class']:
-                    class_values.add(i)
-        for item in class_values:
-            print("mess",item,file=f)
+    try:
+        html = urlopen(urlstring)
+        bs0bj = BeautifulSoup(html,'lxml')
+        try:
+            class_values = set()
+            with open('class_values.txt','a') as f:
+                for item in bs0bj.body.find_all("",{"class":re.compile("^.*")}):
+                    if len(item['class'])==1:
+                        class_values.add(item['class'][0])
+                    else:
+                        for i in item['class']:
+                            class_values.add(i)
+                for item in class_values:
+                    print("mess",item,file=f)
+        except IOError:
+            pass
+    except ValueError:
+        pass
 with open('urllist.txt') as f:
     for each_line in f:
         getTag(each_line)
