@@ -6,10 +6,9 @@ def predict(testval):
 
     for tag in lines:
         tag = tag.strip('\n')
-        separate = tag.split(' ')
-        joint = ' '
-        trainval.append(joint.join(separate[1:]))
-        attribute.append(separate[0])
+        a, b = tag.split(' ', 1)
+        trainval.append(b)
+        attribute.append(a)
 
     allval = testval + trainval  # 合并列表同时向量化
 
