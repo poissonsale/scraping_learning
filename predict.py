@@ -27,6 +27,8 @@ def predict(testval):
     rf.fit(train_data, train_target)
     #rf.predict(test_data)
 
+    #主帖 用户USR 时间DAT 标题TIT 正文CNT
+    #跟帖 用户RUS 时间RDT 标题RTI 正文RCT
     TIT = [];tit = [];USR = [];usr = [];DAT = [];dat = [];CNT = [];cnt = []
     RUS = [];rus = [];RDT = [];rdt = [];RTI = [];rti = [];RCT = [];rct = []
     for i in range(len(test_data)):
