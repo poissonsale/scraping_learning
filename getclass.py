@@ -9,6 +9,7 @@ from bs4 import BeautifulSoup
 import re
 from bs4 import NavigableString
 
+
 def getTag(urlstring):
     try:
         html = urlopen(urlstring)
@@ -23,11 +24,19 @@ def getTag(urlstring):
                         for i in item['class']:
                             class_values.add(i)
                 for item in class_values:
+                    if '-' in item:
+                        raw = item.split('-')
+                        item = ' '.join(raw)
+                    elif '_' in item:
+                        raw = item.split('_')
+                        item = ' '.join(raw)
                     print("mess",item,file=f)
+            #print("done")
         except IOError:
             pass
     except:
         pass
-with open('urllist.txt') as f:
+'''with open('urllist.txt') as f:
     for each_line in f:
-        getTag(each_line)
+        getTag(each_line)'''
+getTag('http://8.7k7k.com/thread-1453189-1-1.html')
