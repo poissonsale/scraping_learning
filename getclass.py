@@ -26,7 +26,7 @@ def getTag(urlstring):
                     print("mess",item,file=f)
         except IOError:
             pass
-    except ValueError:
+    except:
         pass
 with open('urllist.txt') as f:
     for each_line in f:
