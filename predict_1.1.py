@@ -35,7 +35,7 @@ def predict(testval):
     for i in range(len(test_data)):
         P = rf.predict(test_data[i])
         if P == 'IFM':
-            imf += [i]
+            ifm += [i]
 
         if P == 'TIT':
             tit += [i]
