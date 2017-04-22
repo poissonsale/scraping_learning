@@ -35,7 +35,7 @@ def gettest(urlstring):
         except IOError :
             print('IOError')
             pass
-    except ValueError :#or error.HTTPError :#or HTTPError or error.URLError:
-        print('ValueError')
+    except  :#or error.HTTPError :#or HTTPError or error.URLError:
+        print('Error')
         pass
     print('done')
