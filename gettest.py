@@ -19,19 +19,21 @@ def gettest(urlstring):
                             class_values.append(i)
             #print('get testset')
             test=[]
+            origin=[]
             for value in class_values:
+                origin.append(value)
                 if '-' in value:
                     s = value.split('-')
                     d = ' '
                     value=d.join(s)
-                elif '_' in value:
+                if '_' in value:
                     s = value.split('_')
                     d = ' '
                     value = d.join(s)
                 test.append(value)
             testset=test
             #testset=print(test)
-            return (testset)
+            return (origin,testset)
         except IOError :
             print('IOError')
             pass
